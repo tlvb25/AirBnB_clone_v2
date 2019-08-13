@@ -30,8 +30,8 @@ class FileStorage:
         else:
             my_dict = dict()
             for key, value in self.__objects.items():
-                if isinstance(key, cls):
-                    my_dict[key] = value
+                if key.split(".")[0] == cls.__name__:
+                    d[key] = value
             return my_dict
 
     def new(self, obj):
