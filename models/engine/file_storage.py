@@ -28,10 +28,10 @@ class FileStorage:
         if cls is None:
             return self.__objects
         else:
-            my_dict = dict()
-            for key, obj in self.__objects.items():
-                if isinstance(key, cls):
-                    my_dict[obj] = key
+            my_dict = {}
+            for key, value in self.__objects.items():
+                if key.split(".")[0] == cls.__name__:
+                    my_dict[key] = value
             return my_dict
 
     def new(self, obj):
@@ -68,7 +68,7 @@ class FileStorage:
         """
         if obj is None:
             return
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        key = "{}.{}".format(type(obj).__name__, obj.id)
         if key in self.__objects:
             del self.__objects[key]
         self.save()
