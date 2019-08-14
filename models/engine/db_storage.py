@@ -46,7 +46,7 @@ class DBStorage:
             results += self.__session.query(Review).all()
         else:
             results = self.__session.query(cls).all()
-            
+
         result_dict = {}
         for row in results:
             key = '{}.{}'.format(type(obj).__name__, obj.id)
@@ -57,8 +57,7 @@ class DBStorage:
         """
         add the object to the current databse session
         """
-        if obj:
-            self.__session.add(obj)
+        self.__session.add(obj)
 
     def save(self):
         """
@@ -71,13 +70,14 @@ class DBStorage:
         delete obj from the current database session
         """
         if obj:
-            self.__session.delete(obj)
+            self.__session.expunge(obj)
 
     def reload(self):
         """
         create all tables in the database
         """
-        session_factory = sessionmaker(bind=self.__engine,
-                                       expire_on_commit=False)
-        Session = scoped_session(session_factory)
+        Base.metadata.create_all(self.__engine)
+        self.__session = sessionmaker(bind=self.__engine,
+                                      expire_on_commit=False)
+        Session = scoped_session(self.__session)
         self.__session = Session()
