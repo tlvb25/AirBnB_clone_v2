@@ -22,7 +22,7 @@ class DBStorage:
                                              getenv('HBNB_MYSQL_PWD'),
                                              getenv('HBNB_MYSQL_HOST'),
                                              getenv('HBNB_MYSQL_DB')),
-                                             pool_pre_ping=True)
+                                        pool_pre_ping=True)
 
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
@@ -31,7 +31,12 @@ class DBStorage:
         """query all objects from the current db session, based on class name
         """
         if cls is None:
-            query = self.__session.query(User, State, City, Amenity, Place, Review).all()
+            query = self.__session.query(User, 
+                                         State,
+                                         City,
+                                         Amenity,
+                                         Place,
+                                         Review).all()
         else:
             query = self.__session.query(cls)
         query_results = dict()
@@ -60,6 +65,5 @@ class DBStorage:
         """create all tables in the database
         """
         Base.metadata.create_all(self.__engine)
-        self.__session = scoped_session(sessionmaker(
-                                        bind=self.__engine,
-                                        expire_on_commit=False))
+        self.__session = scoped_session(sessionmaker(bind=self.__engine,
+                                                     expire_on_commit=False))
