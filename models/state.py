@@ -2,7 +2,7 @@
 """This is the state class"""
 from os import getenv
 import sqlalchemy
-from sqlalchemy import String, DateTime, Column, ForeignKey
+from sqlalchemy import String, Integer, Column
 from sqlalchemy.orm import relationship
 import models
 from models.base_model import BaseModel, Base
