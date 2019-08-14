@@ -39,7 +39,7 @@ class DBStorage:
                                          Review).all()
         else:
             query = self.__session.query(cls)
-        query_results = dict()
+        query_results = {}
         for classes in query:
             key = '{}.{}'.format(type(classes).__name__, classes.id)
             query_results[key] = classes
