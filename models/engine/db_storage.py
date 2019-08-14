@@ -41,10 +41,10 @@ class DBStorage:
         if cls is None:
             results = self.__session.query(City).all()
             results += self.__session.query(State).all()
-            results += self.__session.query(User).all()
-            results += self.__session.query(Place).all()
-            results += self.__session.query(Amenity).all()
-            results += self.__session.query(Review).all()
+            # results += self.__session.query(User).all()
+            # results += self.__session.query(Place).all()
+            # results += self.__session.query(Amenity).all()
+            # results += self.__session.query(Review).all()
         else:
             results = self.__session.query(cls).all()
 
