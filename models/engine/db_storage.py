@@ -2,7 +2,7 @@
 """ Database Storage Engine """
 
 from sqlalchemy.orm import sessionmaker, scoped_session
-from sqlalchemy import (create_engine)
+from sqlalchemy import create_engine, MetaData
 from models.user import User
 from models.state import State
 from models.city import City
