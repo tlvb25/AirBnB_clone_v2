@@ -3,9 +3,13 @@
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
+class State(BaseModel, Base):
     """This is the class for State
     Attributes:
         name: input name
     """
-    name = ""
+    __tablename__ = 'states'
+    name = Column(String(128), nullable=False)
+    cities = relationship("City",
+                          cascade="all, delete-orphan",
+                          backref="state")
