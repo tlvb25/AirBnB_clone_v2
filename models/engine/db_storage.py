@@ -38,13 +38,18 @@ class DBStorage:
         query all objects from the current db session, based on class name
         """
         if cls is None:
-            results = self.__session.query(City, State, User, Place,
-                                           Review).all()
+            results = self.__session.query(City).all()
+            results += self.__session.query(State).all()
+            results += self.__session.query(User).all()
+            results += self.__session.query(Place).all()
+            results += self.__session.query(Amenity).all()
+            results += self.__session.query(Review).all()
         else:
-            results = self.__session.query(cls)
+            results = self.__session.query(cls).all()
+            
         result_dict = {}
         for row in results:
-            key = ".".join([type(row).__name__, row.id])
+            key = '{}.{}'.format(type(obj).__name__, obj.id)
             result_dict[key] = row
         return result_dict
 
