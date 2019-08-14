@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This is the console for AirBnB"""
 import cmd
+import re
 from models import storage
 from datetime import datetime
 from models.base_model import BaseModel
@@ -39,16 +40,16 @@ class HBNBCommand(cmd.Cmd):
             NameError: when there is no object taht has the name
         """
         try:
-            if not line:
+            if not arg:
                 raise SyntaxError()
-            my_list = line.split(" ")
+            my_list = arg.split(" ")
             obj = eval("{}()".format(my_list[0]))
-            for e in range(len(my_list)):
-                if e == 0:
+            for i in range(len(my_list)):
+                if i == 0:
                     continue
-                newlist = my_list[e].split("=")
-                key = newlist[0]
-                value = newlist[1]
+                new_list = my_list[i].split("=")
+                key = new_list[0]
+                value = new_list[1]
                 value = value.replace('_', ' ')
                 if hasattr(obj, key):
                     setattr(obj, key, eval(value))
