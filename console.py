@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
         try:
             if not line:
                 raise SyntaxError()
-            my_list = arg.split(" ")
+            my_list = line.split(" ")
             obj = eval("{}()".format(my_list[0]))
             for i in my_list[1:]:
                 new_list = i.split("=")
