@@ -75,4 +75,4 @@ class BaseModel:
         """
         deletes storage
         """
-        models.storage.delete()
+        models.storage.delete(self)
