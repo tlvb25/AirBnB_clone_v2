@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""create a unique FileStorage instance according DB used"""
+"""create FileStorage instance based on DB"""
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
