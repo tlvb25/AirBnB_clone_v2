@@ -72,4 +72,7 @@ class BaseModel:
         return my_dict
 
     def delete(self):
+        """
+        deletes storage
+        """
         models.storage.delete()

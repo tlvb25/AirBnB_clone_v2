@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """This is the city class"""
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
+from sqlalchemy import Column, String, ForeignKey
+from models.state import State
+from sqlalchemy.orm import relationship
 
 
 class City(BaseModel, Base):
@@ -13,12 +16,4 @@ class City(BaseModel, Base):
     name = ""
     __tablename__ = 'cities'
     name = Column(String(128), nullable=False)
-    state_id = Column(String(60), nullable=False, ForeignKey('states.id'))
-
-    @property
-    def cities(self):
-        city_list = []
-        for city in self.cities:
-            if self.id == city.state_id:
-                city_list.append(city)
-        return city_list
+    state_id = Column(String(60), nullable=False, ForeignKey("states.id"))
