@@ -7,7 +7,7 @@ import sqlalchemy
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from os import getenv
-​
+
 
 class State(BaseModel, Base):
     """This is the class for State
@@ -16,7 +16,7 @@ class State(BaseModel, Base):
     """
     # DBStorage class attribute
     __tablename__ = 'states'
-​
+    
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         cities = relationship('City', backref='state',
                               cascade='all, delete-orphan')
