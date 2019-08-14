@@ -49,7 +49,7 @@ class DBStorage:
 
         result_dict = {}
         for row in results:
-            key = '{}.{}'.format(type(obj).__name__, obj.id)
+            key = '{}.{}'.format(type(row).__name__, row.id)
             result_dict[key] = row
         return result_dict
 
