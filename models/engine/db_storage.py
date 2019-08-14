@@ -24,7 +24,7 @@ class DBStorage:
         """
         Initialize an instance
         """
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'.
                                       format(getenv('HBNB_MYSQL_USER'),
                                              getenv('HBNB_MYSQL_PWD'),
                                              getenv('HBNB_MYSQL_HOST'),
@@ -41,7 +41,7 @@ class DBStorage:
             results = self.__session.query(City, State, User, Place,
                                            Review).all()
         else:
-            results = self.__session.query(eval(cls)).all()
+            results = self.__session.query(cls)
         result_dict = {}
         for row in results:
             key = ".".join([type(row).__name__, row.id])
