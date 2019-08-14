@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
             NameError: when there is no object taht has the name
         """
         try:
-            if not arg:
+            if not line:
                 raise SyntaxError()
             my_list = arg.split(" ")
             obj = eval("{}()".format(my_list[0]))
