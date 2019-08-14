@@ -14,9 +14,10 @@ class State(BaseModel, Base):
     Attributes:
         name: input name
     """
-    # DBStorage class attribute
-    __tablename__ = 'states'
     
+    __tablename__ = 'states'
+
+    # DBStorage class attribute 'HBNB_TYPE_STORAGE'
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         cities = relationship('City', backref='state',
                               cascade='all, delete-orphan')
