@@ -1,12 +1,8 @@
 #!/usr/bin/python3
 """This is the state class"""
-import models
 from models.base_model import BaseModel, Base
-from models.city import City
-import sqlalchemy
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
-from os import getenv
+from sqlalchemy.orm import relationship, backref
+from sqlalchemy import Column, String
 
 
 class State(BaseModel, Base):
@@ -14,23 +10,17 @@ class State(BaseModel, Base):
     Attributes:
         name: input name
     """
-    __tablename__ = 'states'
+    __tablename__ = "states"
+    name = Column(String(128), nullable=False)
+    cities = relationship(
+        "City",
+        cascade="all,delete,delete-orphan",
+        backref=backref("state", cascade="all,delete,delete-orphan"),
+        passive_deletes=True,
+        single_parent=True)
 
-    # DBStorage class attribute 'HBNB_TYPE_STORAGE'
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
-        cities = relationship('City', backref='state',
-                              cascade='all, delete-orphan')
-
-        name = Column(String(128), nullable=False)
-
-    # FileStorage getter attribute
-    else:
-        @property
-        def cities(self):
-            """Getter attribute in case of file storage"""
-            objects = models.storage.all(City)
-            results_list = []
-            for obj in objects.values():
-                if obj.state_id == self.id:
-                    a_list.append(obj)
-            return results_list
+    @property
+    def cities(self):
+        """returns list of City instances with state_id"""
+        return {k: v for k, v in storage.all().items()
+                if v.state_id == self.id}
