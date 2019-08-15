@@ -25,7 +25,7 @@ class DBStorage:
         """
         Initialize an instance
         """
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'.
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(getenv('HBNB_MYSQL_USER'),
                                              getenv('HBNB_MYSQL_PWD'),
                                              getenv('HBNB_MYSQL_HOST'),
