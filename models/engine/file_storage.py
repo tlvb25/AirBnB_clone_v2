@@ -11,7 +11,6 @@ from models.review import Review
 from models.state import State
 import json
 from os import path
-import datetime
 
 
 class FileStorage:
@@ -20,15 +19,28 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
+    def delete(self, obj=None):
+        """deletes obj from __objects if it's inside
+        Args:
+            obj: given object
+        """
+        if not obj:
+            return
+        key = "{}.{}".format(type(obj).__name__, obj.id)
+        if key in self.__objects:
+            del self.__objects[key]
+            self.save()
+
     def all(self, cls=None):
         """returns a dictionary
+        Args:
+            cls: class type to filter return by
         Return:
             returns a dictionary of __object
         """
-        if cls:
-            return {key: obj for (key, obj) in self.__objects.items()
-                    if isinstance(obj, cls)}
-        return self.__objects
+        if not cls:
+            return self.__objects
+        return {k: v for k, v in self.__objects.items() if type(v) == cls}
 
     def new(self, obj):
         """Formats the objects to be set in self.__objects
@@ -36,7 +48,7 @@ class FileStorage:
            obj - the class type
         """
 
-        key = "{}.{}".format(type(obj).__name__, obj.id)
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
 
     def save(self):
