@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This is the user class"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import String, DateTime, Column, ForeignKey
+from sqlalchemy import String, Column
 from sqlalchemy.orm import relationship
 
 
