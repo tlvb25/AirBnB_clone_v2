@@ -14,7 +14,6 @@ class State(BaseModel, Base):
     Attributes:
         name: input name
     """
-    
     __tablename__ = 'states'
 
     # DBStorage class attribute 'HBNB_TYPE_STORAGE'
