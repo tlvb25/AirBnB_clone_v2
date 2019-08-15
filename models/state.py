@@ -33,5 +33,5 @@ class State(BaseModel, Base):
             results_list = []
             for obj in objects.values():
                 if obj.state_id == self.id:
-                    results_list.append(obj)
+                    a_list.append(obj)
             return results_list
