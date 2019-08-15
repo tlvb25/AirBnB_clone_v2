@@ -11,7 +11,7 @@ class City(BaseModel, Base):
         state_id: The state id
         name: input name
     """
-    # DBStorage class attribute
+    
     __tablename__ = 'cities'
 
     name = Column(String(128), nullable=False)
