@@ -3,24 +3,23 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Column, String
-
+from models.city import City
+from os import getenv
 
 class State(BaseModel, Base):
     """This is the class for State
     Attributes:
         name: input name
     """
-    __tablename__ = "states"
+    __tablename__ = 'states'
     name = Column(String(128), nullable=False)
-    cities = relationship(
-        "City",
-        cascade="all,delete,delete-orphan",
-        backref=backref("state", cascade="all,delete,delete-orphan"),
-        passive_deletes=True,
-        single_parent=True)
 
-    @property
-    def cities(self):
-        """returns list of City instances with state_id"""
-        return {k: v for k, v in storage.all().items()
-                if v.state_id == self.id}
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
+        cities = relationship('City', backref='state',
+                              cascade='all, delete-orphan')
+    else:
+        @property
+        def cities(self):
+            """Getter attribute in case of file storage"""
+            return [city for city in models.storage.all(City)
+                    if city.state_id == self.id]
