@@ -3,9 +3,10 @@
 import models
 from models.base_model import BaseModel, Base
 import sqlalchemy
-import sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 from os import getenv
+
 
 class User(BaseModel, Base):
     """This is the class for user
@@ -17,7 +18,7 @@ class User(BaseModel, Base):
     """
     # DBStorage class attribute
     __tablename__ = 'users'
-    # DBStorage class attribute
+    # DBStorage class attributes
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=True)
