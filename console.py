@@ -48,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
                 new_list = i.split("=")
                 key = new_list[0]
                 value = new_list[1]
-                value = value.replace('_',' ')
+                value = value.replace('_', ' ')
                 if hasattr(obj, key):
                     setattr(obj, key, eval(value))
             obj.save()
