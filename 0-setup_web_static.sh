@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env bash
 # script that sets up your web servers for the deployment of web_static
 apt-get update
 dpkg -l | grep -qw nginx || apt-get install nginx
