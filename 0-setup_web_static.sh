@@ -2,6 +2,7 @@
 # script that sets up your web servers for the deployment of web_static
 apt-get update
 dpkg -l | grep -qw nginx || apt-get install nginx
+ufw allow 'Nginx HTTP'
 mkdir -p /data/web_static/shared/
 mkdir -p /data/web_static/releases/test/
 echo "<html>
