@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """ Task 9 """
 
-from flask import Flask
-from flask import render_template
+from flask import Flask, abort, render_template
 from models import storage
 
 
@@ -12,14 +11,13 @@ app.url_map.strict_slashes = False
 
 @app.teardown_appcontext
 def tear_down(self):
-    """ Method takes care of removal of SQLAlchemy Session """
     storage.close()
 
 
 @app.route('/cities_by_states')
 def show_cities_by_state():
-    return render_template('8-cities_by_states.html',
-                           storage=storage.all("State").values())
+    l = storage.all('State')
+    return render_template('8-cities_by_states.html', l=l)
 
 
 if __name__ == '__main__':
