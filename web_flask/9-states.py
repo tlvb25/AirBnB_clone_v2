@@ -21,7 +21,7 @@ def show_OnlyStates():
 
 
 @app.route('/states/<id>')
-def show_cities_of_state(id=None):
+def show_cities_of_state(id):
     records = storage.all('State')
     return render_template('9-states.html', id=id, records=records)
 
