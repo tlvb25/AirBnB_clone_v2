@@ -49,7 +49,7 @@ def oddEven_template(n):
 @app.route('/states_list')
 def run_all_states():
     records = storage.all('State')
-    return render_template('7-states_list.html', storage=records)
+    return render_template('7-states_list.html', records=records)
 
 
 @app.teardown_appcontext
