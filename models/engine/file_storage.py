@@ -85,3 +85,6 @@ class FileStorage:
             self.__objects = temp_dict
         except Exception:
             pass
+
+    def close(self):
+        self.reload()
