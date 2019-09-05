@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""2. C is fun"""
+""" 3. Python is cool! """
 from flask import Flask
 
 
