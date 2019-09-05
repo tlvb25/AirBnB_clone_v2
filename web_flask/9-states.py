@@ -15,15 +15,15 @@ def tear_down(self):
 
 
 @app.route('/states')
-def show_states():
-    return render_template('7-states_list.html',
-                           storage=storage.all("State").values())
+def show_OnlyStates():
+    storage = storage.all("State").values()
+    return render_template('7-states_list.html', storage=storage)
 
 
 @app.route('/states/<id>')
 def show_cities_of_state(id=None):
-    return render_template('9-states.html', id=id,
-                           storage=storage.all('State'))
+    storage = storage.all('State')
+    return render_template('9-states.html', id=id, storage=storage)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
