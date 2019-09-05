@@ -22,5 +22,5 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """Getter attribute in case of file storage"""
-            return [city for city in models.storage.all(City)
+            return [city for city in models.storage.all(City).values()
                     if city.state_id == self.id]
