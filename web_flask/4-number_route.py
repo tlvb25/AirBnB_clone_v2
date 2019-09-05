@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Simple Flask app, with additional route"""
+"""4. Is it a number? """
 from flask import Flask
 
 
@@ -31,7 +31,7 @@ def python_isFun(text='is cool'):
 
 @app.route('/number/<int:n>')
 def check_ifNum(n):
-    return '{} is a number'.format(n)
+    return "{} is a number".format(n)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

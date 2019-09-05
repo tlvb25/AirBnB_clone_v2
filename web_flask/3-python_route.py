@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Simple Flask app, with additional route"""
+"""3. Python is cool! """
 from flask import Flask
 
 
