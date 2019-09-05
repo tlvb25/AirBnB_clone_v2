@@ -45,6 +45,7 @@ def num_template(n):
 def oddEven_template(n):
     return render_template('6-number_odd_or_even.html', n=n)
 
+
 @app.route('/states_list')
 def run_all_states():
     """Run all states"""
