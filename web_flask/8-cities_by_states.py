@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" List of states """
+""" Task 9 """
 
 from flask import Flask
 from flask import render_template
@@ -16,9 +16,9 @@ def tear_down(self):
     storage.close()
 
 
-@app.route('/states_list')
-def list_states():
-    return render_template('7-states_list.html',
+@app.route('/cities_by_states')
+def show_cities_by_state():
+    return render_template('8-cities_by_states.html',
                            storage=storage.all("State").values())
 
 
