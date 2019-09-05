@@ -14,16 +14,16 @@ def tear_down(self):
     storage.close()
 
 
-@app.route('/states', strict_slashes=False)
+@app.route('/states')
 def show_states():
     return render_template('7-states_list.html',
                            storage=storage.all("State").values())
 
 
-@app.route('/states/<id>', strict_slashes=False)
-def show_cities_of_state(id):
+@app.route('/states/<id>')
+def show_cities_of_state(id=None):
     return render_template('9-states.html', id=id,
-                           storage=storage.all("State"))
+                           storage=storage.all('State'))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

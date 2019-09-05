@@ -2,9 +2,10 @@
 """This is the state class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, DateTime, ForeignKey
 from models.city import City
 from os import getenv
+import models
 
 
 class State(BaseModel, Base):
@@ -21,6 +22,6 @@ class State(BaseModel, Base):
     else:
         @property
         def cities(self):
-            """Getter attribute in case of file storage"""
+            """Just in case records in file storage"""
             return [city for city in models.storage.all(City).values()
                     if city.state_id == self.id]
