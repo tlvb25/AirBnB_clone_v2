@@ -46,7 +46,7 @@ class DBStorage:
             results += self.__session.query(Amenity).all()
             results += self.__session.query(Review).all()
         else:
-            results = self.__session.query(cls).all()
+            results = self.__session.query(eval(cls)).all()
 
         result_dict = {}
         for row in results:
