@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 3. Python is cool! """
+"""Simple Flask app, with additional route"""
 from flask import Flask
 
 
@@ -16,16 +16,19 @@ def hello_betty():
 def hello_hbnb():
     return 'HBNB'
 
+
 @app.route('/c/<text>')
-def c_isfun(text):
+def c_isFun(text):
     text = 'C ' + text.replace('_', ' ')
     return text
 
+
 @app.route('/python/<text>')
 @app.route('/python')
-def python_isCool(text='is cool'):
+def python_isFun(text='is cool'):
     text = 'Python {}'.format(text.replace('_', ' '))
     return text
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
