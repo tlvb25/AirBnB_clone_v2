@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""2. C is fun"""
+"""C is fun!"""
 from flask import Flask
 
 
@@ -16,10 +16,12 @@ def hello_betty():
 def hello_hbnb():
     return 'HBNB'
 
+
 @app.route('/c/<text>')
-def c_isfun(text):
+def c_isFun(text):
     text = 'C ' + text.replace('_', ' ')
     return text
 
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0')
