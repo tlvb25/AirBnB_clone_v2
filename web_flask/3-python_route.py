@@ -21,5 +21,10 @@ def c_isfun(text):
     text = 'C ' + text.replace('_', ' ')
     return text
 
+@app.route('/python/(<text>)')
+def c_isfun(text='is cool'):
+    text = 'Python '.format(text.replace('_', ' '))
+    return text
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
