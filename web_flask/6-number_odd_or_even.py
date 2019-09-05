@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""5. Number template"""
+"""Odd or even?"""
 from flask import Flask, render_template
 
 
