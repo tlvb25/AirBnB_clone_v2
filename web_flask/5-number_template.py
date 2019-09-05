@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""4. Is it a number? """
+"""5. Number template"""
 from flask import Flask, render_template
 
 
