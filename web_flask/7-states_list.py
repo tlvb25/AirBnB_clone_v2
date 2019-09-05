@@ -48,14 +48,12 @@ def oddEven_template(n):
 
 @app.route('/states_list')
 def run_all_states():
-    """Run all states"""
     l = storage.all('State')
     return render_template('7-states_list.html', l=l)
 
 
 @app.teardown_appcontext
 def run_teardown(self):
-    """Closes session"""
     storage.close()
 
 if __name__ == "__main__":
