@@ -12,9 +12,9 @@ app.url_map.strict_slashes = False
 @app.route('/hbnb_filters')
 def hbnb_filters():
     """Filters Section"""
-    l = storage.all('State')
-    a = storage.all('Amenity')
-    return render_template('10-hbnb_filters.html', l=l, a=a)
+    stateRec = storage.all('State')
+    amenityRec = storage.all('Amenity')
+    return render_template('10-hbnb_filters.html', states=stateRec, amenities=amenityRec)
 
 
 @app.teardown_appcontext
