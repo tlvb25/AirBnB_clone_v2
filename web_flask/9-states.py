@@ -22,7 +22,7 @@ def show_OnlyStates():
 
 @app.route('/states/<id>')
 def show_cities_of_state(id):
-    records = storage.all('State')
+    records = storage.all('State').values()
     return render_template('9-states.html', id=id, records=records)
 
 if __name__ == '__main__':
