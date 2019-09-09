@@ -16,7 +16,7 @@ def tear_down(self):
 
 @app.route('/cities_by_states')
 def show_cities_by_state():
-    records = storage.all('State')
+    records = storage.all('State').values()
     return render_template('8-cities_by_states.html', records=records)
 
 
